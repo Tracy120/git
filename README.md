@@ -240,3 +240,7 @@ Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
 To https://github.com/Tracy120/git.git
  + 70924fc...dbd0d25 main -> main (forced update)
 ```
+## Advanced Squashing:
+```bash
+
+```
