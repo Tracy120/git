@@ -419,5 +419,27 @@ $
 ```
 ## Branch Merging:
 ```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git add README.md
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git add "sage 1"
+git add "sage 2"
+warning: in the working copy of 'sage 1', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'sage 2', LF will be replaced by CRLF the next time Git touches it
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git add .
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git commit -m "Resolved conflicts and added files"
+[main d0b2f70] Resolved conflicts and added files
+ 3 files changed, 356 insertions(+)
+ create mode 100644 sage 1
+ create mode 100644 sage 2
+
+```
+## Branch Rebasing:
+```bash
 
 ```
