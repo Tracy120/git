@@ -375,5 +375,49 @@ To https://github.com/Tracy120/git.git
 ```
 ## Creating a Branch from a Commit:
 ```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git log --oneline
+6dd244a (HEAD -> main) Save changes to README.md
+37463fb (origin/main) ok
+55b2c27 (new-branch) Save work before rebase
+43c3887 ok
+00d7f66 Saving progress before rebase
+a81ca9c ok
+dbd0d25 Saving progress before rebase
+4948ab4 ok
+8309950 Save progress before rebase
+a56c19f ok
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git checkout -b ft/new-branch-from-commit <commit-hash>
+bash: syntax error near unexpected token `newline'
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git checkout -b ft/new-branch-from-commit 43c3887
+fatal: a branch named 'ft/new-branch-from-commit' already exists
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git checkout -b ft/new-branch-from-commit 43c3887
+fatal: a branch named 'ft/new-branch-from-commit' already exists
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git branch
+git branch
+  feature-branch
+  ft/branch
+  ft/new-branch-from-commit
+* main
+  new-branch
+  feature-branch
+  ft/branch
+  ft/new-branch-from-commit
+* main
+  new-branch
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$
+```
+## Branch Merging:
+```bash
 
 ```
