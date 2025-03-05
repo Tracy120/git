@@ -441,5 +441,32 @@ $ git commit -m "Resolved conflicts and added files"
 ```
 ## Branch Rebasing:
 ```bash
+c@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git add README.md
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git commit -m "Save changes to README before rebase"
+[main 75984a3] Save changes to README before rebase
+ 1 file changed, 22 insertions(+)
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git checkout ft/new-branch-from-commit
+git rebase main
+Switched to branch 'ft/new-branch-from-commit'
+Successfully rebased and updated refs/heads/ft/new-branch-from-commit.
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-branch-from-commit)
+$ git stash
+No local changes to save
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-branch-from-commit)
+$ git checkout ft/new-branch-from-commit
+git rebase main
+Already on 'ft/new-branch-from-commit'
+Current branch ft/new-branch-from-commit is up to date.
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-branch-from-commit)
+$ git stash pop
+No stash entries found.
 
 ```
