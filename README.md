@@ -347,3 +347,29 @@ Everything up-to-date
 ```bash
 
 ```
+## Branch Deletion:
+```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git branch
+  feature-branch
+  ft/branch
+* main
+  new-branch
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git checkout main
+Already on 'main'
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git branch
+  feature-branch
+  ft/branch
+* main
+  new-branch
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git push origin --delete ft/new-feature
+To https://github.com/Tracy120/git.git
+ - [deleted]         ft/new-feature
+
+```
