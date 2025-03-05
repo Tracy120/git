@@ -373,73 +373,90 @@ To https://github.com/Tracy120/git.git
  - [deleted]         ft/new-feature
 
 ```
-## Creating a Branch from a Commit:
+## Checking Out Detached HEAD:
 ```bash
-pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
-$ git log --oneline
-6dd244a (HEAD -> main) Save changes to README.md
-37463fb (origin/main) ok
-55b2c27 (new-branch) Save work before rebase
-43c3887 ok
-00d7f66 Saving progress before rebase
-a81ca9c ok
-dbd0d25 Saving progress before rebase
-4948ab4 ok
-8309950 Save progress before rebase
-a56c19f ok
+$ git add README.md
 
-pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
-$ git checkout -b ft/new-branch-from-commit <commit-hash>
-bash: syntax error near unexpected token `newline'
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/improved-branch-name)
+$ git commit -m "Save changes to README.md"
+[ft/improved-branch-name 3e1b3c8] Save changes to README.md
+ 1 file changed, 43 insertions(+)
 
-pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
-$ git checkout -b ft/new-branch-from-commit 43c3887
-fatal: a branch named 'ft/new-branch-from-commit' already exists
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/improved-branch-name)
+$ git checkout 37463fb
+Note: switching to '37463fb'.
 
-pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
-$ git checkout -b ft/new-branch-from-commit 43c3887
-fatal: a branch named 'ft/new-branch-from-commit' already exists
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
 
-pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
-$ git branch
-git branch
-  feature-branch
-  ft/branch
-  ft/new-branch-from-commit
-* main
-  new-branch
-  feature-branch
-  ft/branch
-  ft/new-branch-from-commit
-* main
-  new-branch
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 37463fb ok
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((37463fb...))
+$ git stash
+No local changes to save
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((37463fb...))
+$ git checkout 37463fb
+HEAD is now at 37463fb ok
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((37463fb...))
+$ git stash pop
+No stash entries found.
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((37463fb...))
+$ git checkout -- README.md
 
 pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
 $
 ```
 ## Branch Merging:
 ```bash
-pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
-$ git add README.md
 
-pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
-$ git add "sage 1"
-git add "sage 2"
-warning: in the working copy of 'sage 1', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'sage 2', LF will be replaced by CRLF the next time Git touches it
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$ git status
+HEAD detached from 37463fb
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
 
-pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
-$ git add .
+no changes added to commit (use "git add" and/or "git commit -a")
 
-pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
-$ git commit -m "Resolved conflicts and added files"
-[main d0b2f70] Resolved conflicts and added files
- 3 files changed, 356 insertions(+)
- create mode 100644 sage 1
- create mode 100644 sage 2
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$ git stash
+Saved working directory and index state WIP on (no branch): 380de7e ok
 
-```
-## Branch Rebasing:
-```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$ git stash list
+stash@{0}: WIP on (no branch): 380de7e ok
 
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$ git stash pop
+HEAD detached from 37463fb
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (b74784c4d394885198a2e9da1a3b58d68b42a26a)
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$ git stash apply
+No stash entries found.
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$
 ```
