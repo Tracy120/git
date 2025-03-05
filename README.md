@@ -373,3 +373,7 @@ To https://github.com/Tracy120/git.git
  - [deleted]         ft/new-feature
 
 ```
+## Creating a Branch from a Commit:
+```bash
+
+```
