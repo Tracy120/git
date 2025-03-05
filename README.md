@@ -343,3 +343,7 @@ $ git push --force-with-lease
 Everything up-to-date
 
 ```
+## Reordering Commits:
+```bash
+
+```
