@@ -424,3 +424,45 @@ HEAD is now at 37463fb ok
 
 
 ```
+
+
+### part 3
+## Stashing Changes:
+```bash
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$ git status
+HEAD detached from 37463fb
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$ git stash
+Saved working directory and index state WIP on (no branch): 380de7e ok
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$ git stash list
+stash@{0}: WIP on (no branch): 380de7e ok
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$ git stash pop
+HEAD detached from 37463fb
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (b74784c4d394885198a2e9da1a3b58d68b42a26a)
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$ git stash apply
+No stash entries found.
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((380de7e...))
+$
+```
