@@ -123,3 +123,8 @@ $ git rebase -i HEAD~2
 Successfully rebased and updated refs/heads/main.
 
 ```
+## Keeping History Tidy - Squashing Commits:
+```bash
+
+
+```
