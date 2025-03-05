@@ -81,6 +81,45 @@ To https://github.com/Tracy120/git.git
 ```
 ## Editing Commit History:
 ```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git stash
+Saved working directory and index state WIP on main: a56c19f ok
 
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git rebase -i HEAD~2
+Successfully rebased and updated refs/heads/main.
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git stash pop
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+# u, update-ref <ref> = track a placeholder for the <ref> to be updated
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (b9634aaae96dc2f4b742e3fa039f81162bac4d59)
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git add .
+git commit -m "Save progress before rebase"
+[main 8309950] Save progress before rebase
+ 1 file changed, 5 insertions(+)
+# u, update-ref <ref> = track a placeholder for the <ref> to be updated
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git rebase -i HEAD~2
+Successfully rebased and updated refs/heads/main.
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git reset --hard
+HEAD is now at 8309950 Save progress before rebase
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git rebase -i HEAD~2
+Successfully rebased and updated refs/heads/main.
 
 ```
