@@ -125,6 +125,118 @@ Successfully rebased and updated refs/heads/main.
 ```
 ## Keeping History Tidy - Squashing Commits:
 ```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git stash
+Saved working directory and index state WIP on main: 4948ab4 ok
 
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git rebase -i HEAD~2
+Successfully rebased and updated refs/heads/main.
 
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git stash pop
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+# u, update-ref <ref> = track a placeholder for the <ref> to be updated
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (46802a4e829a2860451b5551fbdcf910fa2fadd6)
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git add .
+git commit -m "Saving progress before rebase"
+[main dbd0d25] Saving progress before rebase
+ 1 file changed, 5 insertions(+)
+# u, update-ref <ref> = track a placeholder for the <ref> to be updated
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git rebase -i HEAD~2
+Successfully rebased and updated refs/heads/main.
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git reset --hard
+HEAD is now at dbd0d25 Saving progress before rebase
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git rebase -i HEAD~2
+Successfully rebased and updated refs/heads/main.
+
+```
+## Splitting a Commit:
+```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git log --oneline
+70924fc (HEAD -> main, origin/main) ok
+dbd0d25 Saving progress before rebase
+4948ab4 ok
+8309950 Save progress before rebase
+a56c19f ok
+cc2e667 Updated commit to include test4.md
+3bd346f chore: Create third and fourth files
+368ca36 chore: Create another file
+56d2b59 chore: Create initial file
+693b72c first commit
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git reset HEAD~1
+Unstaged changes after reset:
+M       README.md
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git reset
+Unstaged changes after reset:
+M       README.md
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git add third_file.md
+git commit -m "Create Third File"
+fatal: pathspec 'third_file.md' did not match any files
+On branch main
+Your branch is behind 'origin/main' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git add fourth_file.md
+git commit -m "Create Fourth File"
+fatal: pathspec 'fourth_file.md' did not match any files
+On branch main
+Your branch is behind 'origin/main' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git log --oneline --graph
+* dbd0d25 (HEAD -> main) Saving progress before rebase
+* 4948ab4 ok
+* 8309950 Save progress before rebase
+* a56c19f ok
+* cc2e667 Updated commit to include test4.md
+* 3bd346f chore: Create third and fourth files
+* 368ca36 chore: Create another file
+* 56d2b59 chore: Create initial file
+* 693b72c first commit
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git push --force
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Tracy120/git.git
+ + 70924fc...dbd0d25 main -> main (forced update)
 ```
