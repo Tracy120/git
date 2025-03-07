@@ -595,6 +595,84 @@ pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
 $
 ```
 
+## Branch Deletion:
+```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git branch
+  feature-branch
+  ft/branch
+* main
+  new-branch
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git checkout main
+Already on 'main'
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git branch
+  feature-branch
+  ft/branch
+* main
+  new-branch
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git push origin --delete ft/new-feature
+To https://github.com/Tracy120/git.git
+ - [deleted]         ft/new-feature
+
+```
+## Checking Out Detached HEAD:
+```bash
+$ git add README.md
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/improved-branch-name)
+$ git commit -m "Save changes to README.md"
+[ft/improved-branch-name 3e1b3c8] Save changes to README.md
+ 1 file changed, 43 insertions(+)
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/improved-branch-name)
+$ git checkout 37463fb
+Note: switching to '37463fb'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 37463fb ok
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((37463fb...))
+$ git stash
+No local changes to save
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((37463fb...))
+$ git checkout 37463fb
+HEAD is now at 37463fb ok
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((37463fb...))
+$ git stash pop
+No stash entries found.
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((37463fb...))
+$ git checkout -- README.md
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced ((37463fb...))
+$ git checkout 37463fb
+HEAD is now at 37463fb ok
+
+
+```
+
 ### part 3
 ## Stashing Changes:
 ```bash
