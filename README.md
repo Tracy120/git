@@ -343,10 +343,7 @@ $ git push --force-with-lease
 Everything up-to-date
 
 ```
-## Reordering Commits:
-```bash
 
-```
 ## Branch Deletion:
 ```bash
 pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
