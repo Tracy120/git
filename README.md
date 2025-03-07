@@ -421,7 +421,179 @@ HEAD is now at 37463fb ok
 
 
 ```
+### part 2
+## Feature Branch Creation
+```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git switch -c ft/new-feature
+Switched to a new branch 'ft/new-feature'
 
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-feature)
+$ git checkout -b ft/new-feature
+fatal: a branch named 'ft/new-feature' already exists
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-feature)
+$ git branch
+  feature-branch
+  ft/branch
+  ft/improved-branch-name
+* ft/new-feature
+  main
+  new-branch
+  new-branch-name
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-feature)
+$
+```
+## Working on the Feature Branch:
+```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-feature)
+$ touch feature.txt
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-feature)
+$ echo "Adding new content to the feature file" > feature.txt
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-feature)
+$ cat feature.txt
+Adding new content to the feature file
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-feature)
+$ git add feature.txt
+warning: in the working copy of 'feature.txt', LF will be replaced by CRLF the next time Git touches it
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-feature)
+$ git commit -m "Implemented core functionality for new feature"
+[ft/new-feature d6bb18b] Implemented core functionality for new feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-feature)
+$ git log --oneline
+d6bb18b (HEAD -> ft/new-feature) Implemented core functionality for new feature
+7bf5134 (main) Resolved conflicts after stash pop
+fba1c07 (origin/main) Merge commit 'bf2ea36'
+bf2ea36 (origin/new-branch-name, new-branch-name) ok
+380de7e ok
+48633d9 Merge branch 'main' of https://github.com/Tracy120/git into HEAD
+a81484c ok
+75984a3 Save changes to README before rebase
+d0b2f70 Resolved conflicts and added files
+6dd244a Save changes to README.md
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-feature)
+$
+```
+##  Switching Back and Making More Changes:
+```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (ft/new-feature)
+$ git checkout main
+Switched to branch 'main'
+M       README.md
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git switch main
+Already on 'main'
+M       README.md
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ touch readme.txt
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ echo "Hello, this is the project readme file with an introduction." > readme.txt
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ cat readme.txt
+Hello, this is the project readme file with an introduction.
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git add readme.txt
+warning: in the working copy of 'readme.txt', LF will be replaced by CRLF the next time Git touches it
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git commit -m "Updated project readme"
+[main ac01a80] Updated project readme
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git log --oneline
+\
+ac01a80 (HEAD -> main) Updated project readme
+7bf5134 Resolved conflicts after stash pop
+fba1c07 (origin/main) Merge commit 'bf2ea36'
+bf2ea36 (origin/new-branch-name, new-branch-name) ok
+380de7e ok
+48633d9 Merge branch 'main' of https://github.com/Tracy120/git into HEAD
+a81484c ok
+75984a3 Save changes to README before rebase
+d0b2f70 Resolved conflicts and added files
+6dd244a Save changes to README.md
+> :wq
+bash: :wq: command not found
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$
+```
+## Local vs. Remote Branches:
+```bash
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git branch
+  feature-branch
+  ft/branch
+  ft/improved-branch-name
+  ft/new-feature
+* main
+  new-branch
+  new-branch-name
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git branch -r
+  origin/feature-branch
+  origin/ft/improved-branch-name
+  origin/main
+  origin/new-branch-name
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git branch -a
+  feature-branch
+  ft/branch
+  ft/improved-branch-name
+  ft/new-feature
+* main
+  new-branch
+  new-branch-name
+  remotes/origin/feature-branch
+  remotes/origin/ft/improved-branch-name
+  remotes/origin/main
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git push origin ft/new-feature
+Enumerating objects: 24, done.
+Counting objects: 100% (24/24), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (17/17), done.
+Writing objects: 100% (18/18), 2.47 KiB | 281.00 KiB/s, done.
+Total 18 (delta 10), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (10/10), completed with 2 local objects.
+remote:
+remote: Create a pull request for 'ft/new-feature' on GitHub by visiting:
+remote:      https://github.com/Tracy120/git/pull/new/ft/new-feature
+remote:
+To https://github.com/Tracy120/git.git
+ * [new branch]      ft/new-feature -> ft/new-feature
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$ git push --set-upstream origin ft/new-feature
+Everything up-to-date
+branch 'ft/new-feature' set up to track 'origin/ft/new-feature'.
+
+pc@DESKTOP-OTTEP0S MINGW64 ~/Documents/Advanced (main)
+$
+```
 
 ### part 3
 ## Stashing Changes:
